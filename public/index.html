@@ -47,6 +47,8 @@
         if(!text || !author){
           return;
         }
+        //trigger the onCommentSubmit event
+        this.props.onCommentSubmit({author:author,text:text})
         //TODO: send request to the server
         React.findDOMNode(this.refs.author).value='';
         React.findDOMNode(this.refs.text).value='';
@@ -79,6 +81,7 @@
       },
       handleCommentSubmit:function(comment){
         //TODO: submit to the server and refresh the list
+        console.log("submiting the comment..",comment);
       },
       getInitialState:function(){
         return {data:[]};
