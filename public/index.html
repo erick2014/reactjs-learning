@@ -12,6 +12,11 @@
   <div id="content">  </div>
   <script type="text/jsx">
     //your code here
+    var data=[
+      {author:"Pete Hunt",text:"This is one comment"},
+      {author:"Jordan Walke",text:"This is *another* comment"}
+    ];
+
     var Comment=React.createClass({
       render:function(){
         var rawMarkup=marked(this.props.children.toString(),{sanitize:true});
@@ -46,9 +51,9 @@
     var CommentBox=React.createClass({
       render:function(){
         return(
-          <div class="commentBox">
+          <div className="commentBox">
             <h1>Comments</h1>
-            <CommentList/>
+            <CommentList data={this.props.data}/>
             <CommentForm/>
           </div>
         );
@@ -56,7 +61,7 @@
     });
 
     React.render(
-      <CommentBox />,
+      <CommentBox data={data}/>,
       document.getElementById('content')
     );
     </script>
