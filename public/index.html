@@ -8,10 +8,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
-  <div id="content">
-    <script type="text/jsx">
+  <div id="content"></div>
+  <script type="text/jsx">
     //your code here
+      var CommentBox=React.createClass({
+        render:function(){
+          return(
+            <div class="commentBox">
+              Hello, world! I am a CommentBox
+            </div>
+          );
+        }
+      });
+
+      React.render(
+        <CommentBox />,
+        document.getElementById('content')
+      );
     </script>
-  </div>
 </body>
 </html>
