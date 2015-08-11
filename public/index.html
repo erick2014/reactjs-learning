@@ -80,6 +80,10 @@
         });
       },
       handleCommentSubmit:function(comment){
+        var comments=this.state.data;
+        comments.push(comment);
+        this.setState({data:comments})
+
         $.ajax({
           url:this.props.url,
           dataType:'json',
