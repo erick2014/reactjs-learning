@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+  </head>
+  <body>
+    <script type="text/jsx">
+      var Button=React.createClass({
+       getInitialState:function(){
+        return {increasing:false}
+       },
+       update:function(){
+        console.log("updating...");
+        this.setProps({val:this.props.val+1});
+       },
+       render:function(){
+        return <button onClick={this.update}>{this.props.val}</button>
+       },
+       shouldComponentUpdate:function(nextProps,nextState){
+        console.log("should update?...")
+        console.log(nextProps.val % 5===0)
+        return nextProps.val % 5===0;
+       },
+       componentWillReceiveProps:function(nextProps){
+        this.setState({increasing:nextProps.val>this.props.val})
+       },
+       componentDidUpdate:function(prevProps,prevState){
+        console.log("prevProps",prevProps);
+       }
+
+      });
+
+      React.render(<Button val={0} />,document.body);
+    </script>
+
+  </body>
+</html>
+  
