@@ -14,15 +14,28 @@
        update:function(){
         this.setState({val:this.state.val+1})
        },
+       /*
+        this is called immediately before the initial render occurs.
+        if u call setState within this method, render() will see
+        the updated state
+       */
        componentWillMount:function(){
         console.log("wil be mounting");
+        this.setState({val:1});
        },
        render: function() {
         console.log("rendering...")
          return ( <button onClick={this.update}>{this.state.val}</button> );
        },
+
+        /*
+        Called once, immediately after the initial rendering occurs, at this
+        point in the lifeCycle the component has a DOM representation which
+        you can access via React.findDOMNode(this)
+       */
        componentDidMount:function(){
-        console.log("component mounted!")
+
+        console.log("component mounted!",React.findDOMNode(this));
        },
        componentWillUnmount:function(){
         console.log("component will be unmounted")
